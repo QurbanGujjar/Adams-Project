@@ -1,0 +1,134 @@
+{% extends 'base.html' %} {% block title%} Regster Page {% endblock%} {% block content %}
+
+<body class='text-center'>
+    <h1>Order, Page!</h1>
+    <div class="container">
+        {% include 'includes/booker_modal.html' %}
+        <!-- Main content -->
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        {{form.hidden_tag()}}
+                        <label>Choose Booker{{order_NO}}</label><br>
+
+                        <button type="button" onclick="$('#tblDetailFourn tbody').empty();" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Booker</button>
+                    </div>
+                    <div class="form-group col-md-3">
+                        {{form.bookername.label()}} {{form.bookername(class="form-control",placeholder='Booker Name', readonly="readonly",id="bookername")}}
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        {{form.bookercode.label()}} {{form.bookercode(class="form-control",placeholder='Email',readonly="readonly",id="bookercode")}}
+                    </div>
+
+                    <div class="form-group col-md-3">
+
+
+                    </div>
+
+                    <!-- <div class="form-group col-md-3 ">
+                                {{form.submit(class="btn btn-lg btn-block btn-primary")}}
+                            </div> -->
+                </div>
+                <hr style="border-color: white;">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label>Chose Brand</label><br>
+                        <button type="button" onclick="$('#idtablebrands tbody').empty();" class="btn btn-primary" data-toggle="modal" data-target="#BrandsModal" data-whatever="@mdo">Brand</button>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Brand Name</label>
+                        <input type="text" id="brandname" readonly name="brandname" class="form-control" placeholder="Brand Name">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Brand Code</label>
+                        <input type="text" id="brandcode" readonly name="brandcode" class="form-control" placeholder="Brand Code">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label>Enter PCs</label>
+                        <input type="text" class="form-control" id="brandPC" name="brandPC" placeholder="Enter PCs">
+                        <!-- <input type="text" class="form-control" id="itemCT" name="itemCT" placeholder="Enter itemCT"> -->
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Enter CTn</label>
+                        <!-- <input type="text" class="form-control" id="itemPC" name="itemPC" placeholder="Enter itemPC"> -->
+                        <input type="text" class="form-control" id="brandCT" name="brandCT" placeholder="Enter CTn">
+                    </div>
+                </div>
+
+                <!---end of rows----->
+
+                <div class="text-right">
+                    <input type="text" hidden class="form-control" id="order_NO" name="order_NO" value="{{order_NO}}">
+                    <input type="text" hidden class="form-control" id="brandgram" name="brandgram" placeholder="brandgram">
+                    <input type="text" hidden class="form-control" id="brandrate" name="brandrate" placeholder="brandrate">
+                    <input type="text" hidden class="form-control" id="brandpacking" name="brandpacking" placeholder="brandpacking">
+                    <button class="btn btn-primary" onclick="add_Bran_dbtn()" type="submit" id="Add" name="Add">Add</button>
+                    <button class="btn btn-primary" onclick="Save_orderd_btn()" type="submit" id="Save" name="Save">Save</button>
+
+                </div>
+                </form>
+                <table cellspacing="0" class="table table-hover table-dark" id="orderDetails">
+                    <thead>
+                        <tr>
+                            <th style="width: 20px" class="font-small">Sr.No</th>
+                            <!-- <th class="font-small">Order NO</th> -->
+                            <th style="width: 120px" class="font-small">Brand Code</th>
+                            <th class="font-small">Brand Name</th>
+                            <th class="font-small">Grams</th>
+                            <th class="font-small">Catans</th>
+                            <th class="font-small">Pieces</th>
+                            <th class="font-small">Unit Price</th>
+                            <th class="font-small">Gross Amount</th>
+                            <th class="font-small">Delete</th>
+                            <th class="font-small">Edit</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td>{{item.Brand_code}}</td>
+                            <td>{{item.Brand_code}}</td>
+                            <td>{{item.Brand_name}}</td>
+                            <td>{{item.grams}}</td>
+                            <td>{{item.Catan}}</td>
+                            <td>{{item.Piece}}</td>
+                            <td>{{item.Unit_piece}}</td>
+                            <td>{{item.Gross_amount}}</td>
+
+                            <td><label onClick="Edit_Order('{{item.id}}','{{item.Brand_code}}')"><i class="fa fa-edit fa-lg"></i></lable></td>
+                       <td><label  onClick="DeleteFromOrder('{{item.id}}')"><i class="fa fa-trash fa-lg"></i></label> </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <input hidden type="text" id="order_no" value="{{next}}" class="form-control"> -->
+                <div class="row">
+
+                    <div class=" col-md-3 ">
+                        <label> Total Gross Amount</label>
+                        <input type="text" class="form-control" readonly id="totalgrossamount" name="totalgrossamount" placeholder="Total Gross Amount">
+                    </div>
+                    <div class="form-group col-md-3 ">
+                        <label id="expenses_label">Expenses</label>
+                        <input type="text" class="form-control" id="expenses" name="expenses" placeholder="Enter Expenses">
+                    </div>
+                    <div class="form-group col-md-3 ">
+                        <label id="tax_amount">GST Tax</label>
+                        <input type="text" class="form-control" placeholder="Enter GST" id="GST" name="GST">
+                    </div>
+                    <div class="form-group col-md-3 ">
+                        <label>Total Amount</label>
+                        <input type="text" readonly class="form-control" id="totalamount" name="totalamount" placeholder="Total Amount">
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+{% endblock %}

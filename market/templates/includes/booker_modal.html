@@ -1,0 +1,624 @@
+<style>
+    .modal-content {
+        /* background-color: #212121; */
+        background: rgb(131, 58, 180);
+        background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    }
+</style>
+
+<!-- Modal to Select Booker -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Search Booker</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label" for="inlineRadio1">Search by</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Booker_name" id="Booker_name" value="Booker_name" checked>
+                                    <label class="form-check-label" for="inlineRadio1">Booker Name</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Booker_code" id="Booker_code" value="Booker_code">
+                                    <label class="form-check-label" for="inlineRadio2">Booker Code</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="text" id="inputvalue1" name="inputvalue1" class="form-control" placeholder="Enter text">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="button" class="btn btn-secondary" id="productqty" onclick="Search_booker()" value="Search">
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-hover table-dark" id="tblDetailFourn">
+                        <thead>
+                            <tr>
+                                <!-- Your Columns HERE -->
+                                <th scope="col">Sr.no</th>
+                                <th scope="col">Booker Code</th>
+                                <th scope="col">Booker Name</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--    </div> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal to Select Brands -->
+
+<div class="modal fade" id="BrandsModal" tabindex="-1" role="dialog" aria-labelledby="BrandsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="BrandsModalLabel">Search Brand</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label" for="inlineRadio1">Search by</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="brand_name" id="brand_name" value="brand_name" checked>
+                                    <label class="form-check-label" for="inlineRadio1">Brand Name</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="brand_code" id="brand_code" value="brand_code">
+                                    <label class="form-check-label" for="inlineRadio2">Brand Code</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="text" id="inputvalue2" name="inputvalue2" class="form-control" placeholder="Enter text">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="button" class="btn btn-secondary" id="productqty" onclick="Search_brands()" value="Search">
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-hover table-dark" id="idtablebrands">
+                        <thead>
+                            <tr>
+                                <!-- Your Columns HERE -->
+                                <th scope="col">Sr.no</th>
+                                <th scope="col">Brand Code</th>
+                                <th scope="col">Brand Name</th>
+                                <th scope="col">Grams</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--    </div> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Confirm Delete item from order  -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary">
+    Launch demo modal
+  </button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="ConfirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ConfirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ConfirmDeleteModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+<script>
+    let rowCount = 0;
+    let Counter = 0;
+    $('document').ready(function(event) {
+            console.log("Querry running")
+        })
+        // function for Search bookers
+
+    function Search_booker() {
+        // alert("search btn")
+        let itemattribute = document.querySelector('input[name="Booker_name"]:checked').value;
+        console.log(itemattribute)
+        let inputvalue = document.getElementById("inputvalue1").value
+        console.log(inputvalue)
+
+        $.ajax({
+            data: {
+                ID: inputvalue,
+            },
+            type: 'POST',
+            url: '/getbookers'
+
+        }).done(function(data) {
+            if (data.bookers) {
+                bookers = data.bookers
+
+                for (let i = 0; i < bookers.length; i++) {
+
+                    html = `
+                    <tr onclick=getbookerId(${bookers[i].id}) data-dismiss="modal">
+                        <td>${i+1}</td>
+                    <td id="status">${bookers[i].booker_code}</td>
+                    <td>${bookers[i].booker_name}</td>  
+                   
+                    </tr>`;
+                    $('#tblDetailFourn').find('tbody').append(html);
+
+                }
+            }
+            // <i class="fa fa-trash-o fa-lg"></i>
+            // <td><label  onClick="Edit_SKU(${bookers[i].id})"><i class="fa fa-edit fa-lg"></i></lable> </td>
+            // <td><label"><i class="fa fa-trash fa-lg"></label></td>
+            // 
+            // <td><label  onClick="Edit_SKU(${brands[i].id})"><i class="fa fa-edit fa-lg"></i></lable> </td>
+            // <td><label"><i class="fa fa-trash fa-lg"></label></td>
+        });
+
+    }
+    // function for Search booker by ID 
+    function getbookerId(id) {
+        $.ajax({
+            data: {
+                ID: id,
+            },
+            type: 'POST',
+            url: '/getbooker'
+
+        }).done(function(data) {
+            if (data.bookers) {
+                booker = data.bookers
+                document.getElementById('bookername').value = booker.booker_name
+                document.getElementById('bookercode').value = booker.booker_code
+                    // console.log(items.id, items.Brands, items.Rate)
+            }
+        });
+        // console.log(id)
+    }
+    // Search brands function
+    function Search_brands() {
+        // alert("search btn")
+        let itemattribute = document.querySelector('input[name="brand_name"]:checked').value;
+        console.log(itemattribute)
+        let inputvalue = document.getElementById("inputvalue2").value
+        console.log(inputvalue)
+
+        $.ajax({
+            data: {
+                ID: inputvalue,
+            },
+            type: 'POST',
+            url: '/getbrands'
+
+        }).done(function(data) {
+            if (data.brands) {
+                brands = data.brands
+
+                for (let i = 0; i < brands.length; i++) {
+
+                    html = `
+                    <tr onclick=getbrandsId(${brands[i].id}) data-dismiss="modal">
+                        <td>${i+1}</td>
+                        <td>${brands[i].id}</td> 
+                    <td id="status">${brands[i].Brands}</td>
+                    <td>${brands[i].grams}</td>  
+                   
+                    
+                    </tr>`;
+                    $('#idtablebrands').find('tbody').append(html);
+
+                }
+            }
+            // <i class="fa fa-trash-o fa-lg"></i>
+        });
+
+    }
+
+    // function for Search brand by ID 
+    function getbrandsId(id) {
+        $.ajax({
+            data: {
+                ID: id,
+            },
+            type: 'POST',
+            url: '/getbrand'
+
+        }).done(function(data) {
+            if (data.items) {
+                brands = data.items
+                    // console.log(brands.id)
+                document.getElementById('brandname').value = brands.Brands
+                document.getElementById('brandcode').value = brands.id
+                document.getElementById("brandgram").value = brands.grams
+                document.getElementById("brandpacking").value = brands.Packing
+                document.getElementById("brandrate").value = brands.Rate
+                    // console.log(items.id, items.Brands, items.Rate)
+
+            }
+        });
+        // console.log(id)
+    }
+
+    function ClearInputField() {
+        $('#brandcode').val("");
+        $('#brandname').val("");
+        $('#brandgram').val("");
+        $('#brandCT').val("");
+        $('#brandPC').val("");
+        $('#brandrate').val("");
+        $('#brandpacking').val("");
+    }
+
+    function add_Bran_dbtn() {
+        order_NO = document.getElementById("order_NO").value
+        brandcode = document.getElementById("brandcode").value
+        brandname = document.getElementById("brandname").value
+        brandgram = document.getElementById("brandgram").value
+        brandCT = document.getElementById("brandCT").value
+        brandPC = document.getElementById("brandPC").value
+        brandrate = document.getElementById("brandrate").value
+        brandpacking = document.getElementById("brandpacking").value
+
+
+
+        if (brandCT == "") {
+            brandCT = "0"
+            brandCTprice = Number(brandpacking) * Number(brandCT) * Number(brandrate)
+        } else {
+            brandCTprice = Number(brandpacking) * Number(brandCT) * Number(brandrate)
+
+        }
+        if (brandPC == "") {
+            brandPC = "0"
+            brandPCprice = Number(brandrate) * Number(brandPC)
+        } else {
+            brandPCprice = Number(brandrate) * Number(brandPC)
+        }
+        price = String(brandCTprice + brandPCprice)
+            // Number(brandpacking) * Number(brandCT)
+            // Number(brandpacking) * Number(brandCT)
+            // console.log(brandcode, brandname, brandPC, brandCT, brandpacking, brandgram, brandrate, price)
+        $.ajax({
+                data: {
+                    order_NO: order_NO,
+                    brandcode: brandcode,
+                    brandname: brandname,
+                    brandgram: brandgram,
+                    brandCT: brandCT,
+                    brandPC: brandPC,
+                    brandrate: brandrate,
+                    price: price
+
+
+                },
+                type: 'POST',
+                url: '/insert-order-details'
+
+            })
+            .done(function(data) {
+                if (data.order_details) {
+                    order = data.order_details
+                    let gross_amount = 0
+                    let total_amount = 0
+                        // <td>${order[i].id}</td>
+                        // <td>${order[i].Order_no}</td>
+                        // onClick="Edit_SKU(${order[i].id})"
+                    $('#orderDetails tbody').empty()
+                    for (i = 0; i < order.length; i++) {
+                        tablerow = `<tr>
+                             <td>${i+1}</td>
+                             
+                             <td>${order[i].Brand_code}</td>
+                             <td>${order[i].Brand_name}</td>
+                             <td>${order[i].grams}</td>
+                             <td>${order[i].Catan}</td>
+                             <td>${order[i].Piece}</td>
+                             <td>${order[i].Unit_piece}</td>
+                             <td>${order[i].Gross_amount}</td>
+                             <td><label onClick="Edit_Order(${order[i].id},${order[i].Brand_code})" ><i class="fa fa-edit fa-lg"></i></lable></td>
+                            <td><label  onClick="DeleteFromOrder(${order[i].id})"><i class="fa fa-trash fa-lg"></i></label> </td>
+                    
+                                 </tr>`
+                        $('#orderDetails').find('tbody').append(tablerow);
+                        gross_amount = gross_amount + Number(order[i].Gross_amount)
+
+                    }
+                    $('#totalgrossamount').val(gross_amount)
+                    expenses = $('#expenses').val()
+                    if (expenses == "") {
+                        expenses = 0
+                        total_amount = gross_amount - Number(expenses)
+                    } else {
+                        total_amount = gross_amount - Number(expenses)
+
+                    }
+                    $('#totalamount').val(total_amount)
+                }
+            });
+
+
+
+        ClearInputField()
+
+
+    }
+
+
+    // Total Gross Amount
+
+    function total_gross_ammount(order_NO) {
+        $.ajax({
+                data: {
+                    order_NO: order_NO,
+                },
+                type: 'POST',
+                url: '/total-gross-ammount'
+
+            })
+            .done(function(data) {
+                if (data.total_gross) {
+                    total_gross_amount = data.total_gross
+                    $('#totalgrossamount').val(total_gross_amount)
+
+                }
+            });
+    }
+
+    function Edit_Order(del_id, brand_code) {
+        // edit fnction start
+        console.log("Edit order id = " + del_id)
+        let gross_amount = 0
+        let total_amount = 0
+        $.ajax({
+                data: {
+                    order_id: del_id,
+                },
+                type: 'POST',
+                url: '/delete-from-orderdetals'
+            })
+            .done(function(data) {
+                if (data.order_details) {
+                    order = data.order_details
+                        // onClick = "Edit_SKU(${order[i].id})"
+                    $('#orderDetails tbody').empty()
+                    for (i = 0; i < order.length; i++) {
+                        tablerow = `<tr>
+                         <td>${i+1}</td>
+                     <td>${order[i].Brand_code}</td>
+                     <td>${order[i].Brand_name}</td>
+                     <td>${order[i].grams}</td>
+                     <td>${order[i].Catan}</td>
+                     <td>${order[i].Piece}</td>
+                     <td>${order[i].Unit_piece}</td>
+                     <td>${order[i].Gross_amount}</td>
+                     <td><label onClick="Edit_Order(${order[i].id},${order[i].Brand_code})" ><i class="fa fa-edit fa-lg"></i></lable></td>
+                    <td><label  onClick="DeleteFromOrder(${order[i].id})"><i class="fa fa-trash fa-lg"></i></label> </td>
+                         </tr>`
+                        $('#orderDetails').find('tbody').append(tablerow);
+                        gross_amount = gross_amount + Number(order[i].Gross_amount)
+
+                    }
+                    $('#totalgrossamount').val(gross_amount)
+                    expenses = $('#expenses').val()
+                    if (expenses == "") {
+                        expenses = 0
+                        total_amount = gross_amount - Number(expenses)
+                    } else {
+                        total_amount = gross_amount - Number(expenses)
+
+                    }
+                    $('#totalamount').val(total_amount)
+                }
+            })
+
+
+
+        getbrandsId(brand_code)
+
+
+        // edit function end
+    }
+
+    function DeleteFromOrder(id) {
+
+
+        var message = $(this).data('confirm');
+
+        //pop up
+        swal({
+                title: "Are you sure?\nYou want to Delete this Record",
+                text: message,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                    });
+                    $.ajax({
+                            data: {
+                                order_id: id,
+                            },
+                            type: 'POST',
+                            url: '/delete-from-orderdetals'
+                        })
+                        .done(function(data) {
+                            if (data.order_details) {
+                                let gross_amount = 0
+                                let total_amount = 0
+                                order = data.order_details
+                                    // onClick = "Edit_SKU(${order[i].id})"
+                                $('#orderDetails tbody').empty()
+                                for (i = 0; i < order.length; i++) {
+                                    tablerow = `<tr>
+                         <td>${i+1}</td>
+                     <td>${order[i].Brand_code}</td>
+                     <td>${order[i].Brand_name}</td>
+                     <td>${order[i].grams}</td>
+                     <td>${order[i].Catan}</td>
+                     <td>${order[i].Piece}</td>
+                     <td>${order[i].Unit_piece}</td>
+                     <td>${order[i].Gross_amount}</td>
+                     <td><label onClick="Edit_Order(${order[i].id},${order[i].Brand_code})" ><i class="fa fa-edit fa-lg"></i></lable></td>
+                    <td><label  onClick="DeleteFromOrder(${order[i].id})"><i class="fa fa-trash fa-lg"></i></label> </td>
+                         </tr>`
+                                    $('#orderDetails').find('tbody').append(tablerow);
+                                    gross_amount = gross_amount + Number(order[i].Gross_amount)
+
+                                }
+                                $('#totalgrossamount').val(gross_amount)
+                                expenses = $('#expenses').val()
+                                if (expenses == "") {
+                                    expenses = 0
+                                    total_amount = gross_amount - Number(expenses)
+                                } else {
+                                    total_amount = gross_amount - Number(expenses)
+
+                                }
+                                $('#totalamount').val(total_amount)
+                            }
+                        })
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+        // alert("You are deleting" + '<button> ok </button>')
+        // data-toggle="modal" data-target="#ConfirmDeleteModal"
+
+    }
+
+
+    function Save_orderd_btn() {
+        order_NO = $('#order_NO').val();
+        bookername = $('#bookername').val();
+        bookercode = $('#bookercode').val();
+        totalgrossamount = $('#totalgrossamount').val();
+        expenses = $('#expenses').val();
+        GST = $('#GST').val();
+
+        totalamount = $('#totalamount').val();
+
+        console.log(order_NO, bookercode, bookername, totalgrossamount, expenses, totalamount)
+        if (order_NO == '' || bookercode == "" || bookername == "" || totalgrossamount == "" || expenses == "" || totalamount == "") {
+            alert("Please fill requried fields")
+        } else {
+
+
+            //pop up
+            var message = $(this).data('confirm');
+            swal({
+                    title: "Are you sure?\nYou want to Save this Record",
+                    text: message,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Poof! Your order has been saved!", {
+                            icon: "success",
+                        });
+                        $.ajax({
+                            data: {
+                                order_NO: order_NO,
+                                bookercode: bookercode,
+                                bookername: bookername,
+                                totalgrossamount: totalgrossamount,
+                                expenses: expenses,
+                                GST: GST,
+                                totalamount: totalamount
+                            },
+                            type: 'POST',
+                            url: '/save-new-order'
+                        }).done(function(data) {
+                            if (data.save_order) {
+                                console.log(data.save_order)
+                                    // location.reload();
+                                window.location.href = "{{ url_for('market_page') }}"
+                                    // location
+
+                            }
+                        });
+
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+
+
+
+
+        }
+
+    }
+</script>

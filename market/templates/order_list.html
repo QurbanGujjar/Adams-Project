@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block title%} Items Page {% endblock%} {% block content %}
+<div class="container text-center">
+    <h1>Order list, Page!</h1>
+
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <!-- Order_no delivered_date Booker_code Booker_name totalgrossamount Expenses GST Total_amount Status -->
+                <th scope="col">Order No</th>
+                <th scope="col">Delivered Date</th>
+                <th scope="col">Booker Code</th>
+                <th scope="col">Booker Name</th>
+                <th scope="col">Gross Amount</th>
+                <th scope="col">Expenses</th>
+                <th scope="col">GST</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Status</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+            <tr>
+                <td>{{item.Order_no}}</td>
+                <td>{{item.delivered_date}}</td>
+                <td>{{item.Booker_code}}</td>
+                <td>{{item.Booker_name}}</td>
+                <td>{{item.totalgrossamount}}</td>
+                <td>{{item.Expenses}}</td>
+                <td>{{item.GST}}</td>
+                <td>{{item.Total_amount}}</td>
+                <td>{{item.Status}}</td>
+
+                <td><a href="{{url_for('edit_order',Order_no=item.Order_no) }}"><i class="fa fa-edit fa-lg"></i></a></td>
+                <td><label><i class="fa fa-trash fa-lg"></i></label> </td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+
+</div>
+
+{% endblock %}

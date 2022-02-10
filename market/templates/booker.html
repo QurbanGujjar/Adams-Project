@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block title%} Items Page {% endblock%} {% block content %}
+<div class="container text-center">
+    <h1>Booker, Page!</h1>
+
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">ID</th>
+                <th scope="col">Booker Code</th>
+                <th scope="col">Booker Name</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for booker in bookers %}
+            <tr>
+                <td>{{booker.id}}</td>
+                <td>{{booker.booker_code}}</td>
+                <td>{{booker.booker_name}}</td>
+
+                <!-- <td>
+                <button class="btn btn-outline btn-info">More Info</button>
+                <button class="btn btn-outline btn-success">Purchase This Item</button>
+            </td> -->
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+body {
+    /* background-color: #212121; */
+    /* color: white; */
+    /* background-color: cornflowerblue; */
+    /* background-color: dimgray; */
+    /* background-color: transparent; */
+    /* color: yellowgreen */
+    /* background-color: aqua; */
+    /* background-color: aquamarine; */
+    /* background-color: blue; */
+    /* background-color: blueviolet; */
+    /* background-color: coral; */
+    /* background-color: crimson; */
+    /* background-color: currentColor; */
+    /* color: white; */
+    /* background-color: ; */
+    /* background: rgb(9, 32, 121);
+    background: linear-gradient(90deg, rgba(9, 32, 121, 0.3309698879551821) 4%, rgba(7, 143, 237, 1) 45%, rgba(169, 7, 237, 1) 80%); */
+    /* background: rgb(9, 32, 121);
+    background: linear-gradient(90deg, rgba(9, 32, 121, 0.3309698879551821) 4%, rgba(7, 143, 237, 1) 45%, rgba(169, 7, 237, 1) 72%, rgba(227, 70, 101, 1) 100%); */
+    /* background: rgb(185, 5, 20);
+    background: linear-gradient(90deg, rgba(185, 5, 20, 0.5998774509803921) 3%, rgba(9, 32, 121, 0.3309698879551821) 8%, rgba(122, 7, 237, 1) 26%, rgba(7, 143, 237, 1) 67%, rgba(9, 32, 121, 0.3309698879551821) 85%, rgba(227, 70, 101, 1) 97%); */
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+}
