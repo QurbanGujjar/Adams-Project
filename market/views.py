@@ -22,6 +22,10 @@ def home():
   return render_template("/home.html")
   
   
+@app.route("/dashboard")
+def dashboard():
+  return render_template("/dashboard.html")  
+
 @app.route('/items')
 def market_page():
   items=Item.query.all()
