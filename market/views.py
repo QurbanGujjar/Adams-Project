@@ -36,8 +36,8 @@ def order_list():
 
 @app.route('/bookers')
 def bookers_page():
-  bookers=Booker.query.all()
-  return render_template("/Booker.html",bookers=bookers)
+  my_booker=Booker.query.all()
+  return render_template("/Booker.html",my_booker=my_booker)
 
 
 @app.route("/order")
